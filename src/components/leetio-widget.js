@@ -2,66 +2,69 @@ import React, {useState} from "react";
 import './leetio-widget.css';
 
 function LeetioWidget() {
-
-
     const [isOpened, setIsOpened] = useState(false);
-
     const elementsMap = {};
+    const highlightedList = [];
+    const domTree = document.querySelector('html');
 
-
-    const createCounter = (initValue) => {
-        return () => ++initValue;
-    }
-
+    const createCounter = (initValue) => () => initValue++;
     const elementCounter = createCounter(0);
 
     const handleClick = (evt) => {
         if (isOpened) {
-            const hostPageElement = elementsMap[evt.target.id];
-            if (hostPageElement) {
-                const originalBorder = hostPageElement?.style.border.toString();
-                hostPageElement.style.border = 'dashed red';
-                hostPageElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+            const elementIdInWidget = evt.target.id;
+            const hostPageElement = elementsMap[elementIdInWidget];
+            if (hostPageElement && !highlightedList.includes(elementIdInWidget)) {
+                highlightedList.push(evt.target.id);
 
+                const originalBorder = hostPageElement.style.border.toString()
+                const originalBackground = hostPageElement.style.backgroundColor.toString()
+                hostPageElement.style.border = 'dashed red';
+                hostPageElement.style.backgroundColor = 'coral';
+
+                hostPageElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
                 setTimeout(() => {
                     hostPageElement.style.border = originalBorder;
+                    hostPageElement.style.backgroundColor = originalBackground;
+                    highlightedList.splice(highlightedList.indexOf(elementIdInWidget),1);
                 }, 3000)
             }
         }
     }
 
     const renderNode = (elObj) => {
+        if (elObj.id === 'leetio_wrapper') {
+            return;
+        }
         const elementGeneratedId = elementCounter();
         elementsMap[elementGeneratedId] = elObj;
-        console.log(elObj.tagName, elObj.childElementCount)
-        if (elObj.childElementCount < 1) {
-            return (
-                <li id={elementGeneratedId}>
-                    Tagname: {elObj.tagName}
-                </li>
-            );
-        }
+
         return (
             <>
-                <ul id={elementGeneratedId}>
-                    Tagname: {elObj.tagName}
-                    {
-                        [...elObj.children].map(child => {
-                            return renderNode(child);
-                        })
-                    }
-                </ul>
+                <li
+                    id={elementGeneratedId}
+                    key={elementGeneratedId}
+                    className="listElement"
+                >
+                    Tag: {elObj.tagName}
+                </li>
+                {
+                    elObj.childElementCount > 0 &&
+                    <ul>
+                        {
+                            [...elObj.children].map(child => {
+                                return renderNode(child);
+                            })
+                        }
+                    </ul>
+                }
             </>
         );
     }
 
-
-    const domTree = document.querySelector('html');
-
-
     return (
         <div
-            className="docked-widget"
+            className="dockedWidget"
             onClick={handleClick}
             style={{backgroundColor: isOpened ? 'rgba(0,0,0,.5)' : ''}}
         >
@@ -72,7 +75,9 @@ function LeetioWidget() {
             >
                 {isOpened ? 'Close' : 'View DOM'}
             </button>
-            {isOpened && renderNode(domTree)}
+            <div className="results">
+                {isOpened && renderNode(domTree)}
+            </div>
         </div>
     );
 }
