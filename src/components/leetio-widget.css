@@ -1,13 +1,35 @@
-.docked-widget {
+.listElement {
+    cursor: pointer;
+    color: white;
+    font-family: Arial, system-ui;
+}
+
+.listElement:hover {
+    background-color: coral;
+}
+
+.results {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-weight: bold;
+    white-space: nowrap;
+    width: fit-content;
+    max-height: 500px;
+    padding: 0 20px;
+}
+
+.dockedWidget {
     position: fixed;
     top: 0px;
     right: 10px;
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    /*padding: 0 10px;*/
+
+    border-radius: 0 0 10px 10px;
     z-index: 9999;
-    max-height: 500px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    white-space: nowrap;
+
 }
 
 .dock {
@@ -20,10 +42,14 @@
     border: 2px dashed #00BFA6;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     transition: .4s;
+    max-width: 180px;
+    font-size: 14px;
+    font-weight: 100;
 }
 
 .dock.close {
     background-color: #bf0600;
+    color: #fff;
     border: 2px dashed #bf0600;
 }
 
@@ -49,4 +75,24 @@
 
 .dock:active {
     background-color: #87dbd0;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0);
 }
