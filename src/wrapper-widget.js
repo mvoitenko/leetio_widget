@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { createRoot } from 'react-dom/client';
 import LeetioWidget from "./components/leetio-widget";
+import config from './config.json';
 
 class WrapperWidget {
 
@@ -12,10 +13,10 @@ class WrapperWidget {
 
         function doRender () {
             if (WrapperWidget.widgetElement) {
-                throw new Error('WrapperWidget is already mounted, unmount it first');
+                return;
             }
             const el = document.createElement('div');
-            el.id= 'leetio_wrapper'
+            el.id = config.widget_id;
             document.body.appendChild(el);
             const root = createRoot(el);
             root.render(leetioWidget);
@@ -26,19 +27,16 @@ class WrapperWidget {
         if (document.readyState === 'complete') {
             doRender();
         } else {
-            window.addEventListener('load', () => {
-                doRender();
-            });
+            window.addEventListener('load', doRender);
         }
     }
 
     static unmount() {
-        if (!WrapperWidget.widgetElement) {
-            throw new Error('WrapperWidget isn\'t mounted, mount it first');
+        if (WrapperWidget.widgetElement) {
+            ReactDOM.unmountComponentAtNode(WrapperWidget.widgetElement);
+            WrapperWidget.el.parentNode.removeChild(WrapperWidget.widgetElement);
+            WrapperWidget.el = null;
         }
-        ReactDOM.unmountComponentAtNode(WrapperWidget.widgetElement);
-        WrapperWidget.el.parentNode.removeChild(WrapperWidget.widgetElement);
-        WrapperWidget.el = null;
     }
 }
 
