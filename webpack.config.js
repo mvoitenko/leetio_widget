@@ -1,9 +1,7 @@
 const path = require('path');
 
-
-
 module.exports = {
-    mode: process.env.NODE_ENV || 'development',
+    mode: process.env.NODE_ENV || 'production',
     entry: './src/wrapper-widget.js',
     output: {
         filename: 'leetio_widget.js',
@@ -15,14 +13,14 @@ module.exports = {
         },
         libraryExport: 'default',
     },
-    module:{
-        rules:[   //загрузчик для jsx
+    module: {
+        rules: [   //загрузчик для jsx
             {
                 test: /\.(js|jsx)$/, // определяем тип файлов
                 exclude: /node_modules/,  // исключаем из обработки папку node_modules
                 loader: "babel-loader",   // определяем загрузчик
-                options:{
-                    presets:[ "@babel/preset-react"]    // используемые плагины
+                options: {
+                    presets: ["@babel/preset-react"]    // используемые плагины
                 }
             },
             {
