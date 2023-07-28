@@ -22,7 +22,7 @@ function LeetioWidget() {
                 hostPageElement.style.border = 'dashed red';
                 hostPageElement.style.backgroundColor = 'coral';
 
-                hostPageElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+                hostPageElement.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
                 setTimeout(() => {
                     hostPageElement.style.border = originalBorder;
                     hostPageElement.style.backgroundColor = originalBackground;

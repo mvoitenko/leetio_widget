@@ -11,11 +11,9 @@ class WrapperWidget {
         const leetioWidget = <LeetioWidget />
 
         function doRender () {
-
             if (WrapperWidget.widgetElement) {
                 throw new Error('WrapperWidget is already mounted, unmount it first');
             }
-
             const el = document.createElement('div');
             el.id= 'leetio_wrapper'
             document.body.appendChild(el);
@@ -43,7 +41,6 @@ class WrapperWidget {
         WrapperWidget.el = null;
     }
 }
-
 
 export default WrapperWidget;
 

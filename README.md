@@ -27,6 +27,6 @@ The page will reload when you make changes.
 
 ### `npm run build`
 
-Builds the widget script for production to the `build` folder.\
+Builds the widget script for production to the `build` folder.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.
