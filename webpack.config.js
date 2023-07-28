@@ -9,9 +9,11 @@ module.exports = {
         filename: 'leetio_widget.js',
         path: path.resolve(__dirname, './public'),
         publicPath: '/',
-        library: 'WrapperWidget',
+        library: {
+            name: "WrapperWidget",
+            type: "window"
+        },
         libraryExport: 'default',
-        libraryTarget: 'window',
     },
     module:{
         rules:[   //загрузчик для jsx
