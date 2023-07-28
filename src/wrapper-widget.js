@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import LeetioWidget from "./components/leetio-widget";
 
 class WrapperWidget {
@@ -16,8 +17,10 @@ class WrapperWidget {
             }
 
             const el = document.createElement('div');
+            el.id= 'leetio_wrapper'
             document.body.appendChild(el);
-            ReactDOM.render(leetioWidget, el);
+            const root = createRoot(el);
+            root.render(leetioWidget);
             WrapperWidget.widgetElement = el;
         }
 
