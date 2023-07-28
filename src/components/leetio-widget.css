@@ -2,44 +2,51 @@
     position: fixed;
     top: 0px;
     right: 10px;
-    width: 300px;
+    width: fit-content;
     z-index: 9999;
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    white-space: nowrap;
 }
 
 .dock {
-    font-size: 16px;
-    font-weight: 200;
-    letter-spacing: 1px;
-    padding: 13px 20px 13px;
-    outline: 0;
-    border: 1px solid black;
+    background-color: #00BFA6;
+    padding: 7px 40px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    border: 2px dashed #00BFA6;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .4s;
 }
 
-.dock:after {
-    content: "";
-    background-color: #ffe54c;
-    width: 100%;
-    z-index: -1;
-    position: absolute;
-    height: 100%;
-    top: 7px;
-    left: 7px;
-    transition: 0.2s;
+.dock.close {
+    background-color: #bf0600;
+    border: 2px dashed #bf0600;
 }
 
-.dock:hover:after {
-    top: 0px;
-    left: 0px;
+
+.dock span:last-child {
+    display: none;
 }
 
-@media (min-width: 768px) {
-    .dock {
-        padding: 13px 50px 13px;
-    }
+.dock:hover {
+    transition: .4s;
+    border: 2px dashed #00BFA6;
+    background-color: #fff;
+    color: #00BFA6;
+}
+
+.dock.close:hover {
+    transition: .4s;
+    background-color: #fff;
+    border: 2px dashed #bf0600;
+    color: #bf0600;
+}
+
+
+.dock:active {
+    background-color: #87dbd0;
 }
