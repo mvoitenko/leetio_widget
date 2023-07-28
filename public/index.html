@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
     <meta
-      name="description"
-      content="Web site created using create-react-app"
+            name="description"
+            content="Web site created using create-react-app"
     />
     <title>Example DOM Page</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script src="./leetio_widget.js"></script>
-    <script>
-      WrapperWidget.mount();
-    </script>
-  </body>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div>
+    <p>Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні. Lorem Ipsum є,
+        фактично, стандартною "рибою" аж з XVI сторіччя, коли невідомий друкар взяв шрифтову гранку та
+        склав на ній підбірку зразків шрифтів. "Риба" не тільки успішно пережила п'ять століть,
+        але й прижилася в електронному верстуванні, залишаючись по суті незмінною.</p>
+    <p>Вона популяризувалась в 60-их роках минулого сторіччя завдяки виданню зразків шрифтів Letraset, які містили
+        уривки з Lorem Ipsum, і вдруге - нещодавно завдяки програмам комп'ютерного верстування на кшталт
+        Aldus Pagemaker, які використовували різні версії Lorem Ipsum.</p>
+
+    <p>
+    <ul><span>List1</span>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <ul>Inner List
+            <li>item21</li>
+            <li>item22</li>
+            <li>item23</li>
+        </ul>
+    </ul>
+    </p>
+</div>
+<script src="./leetio_widget.js"></script>
+<script>
+    WrapperWidget.mount();
+</script>
+</body>
 
 </html>
