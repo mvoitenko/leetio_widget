@@ -1,0 +1,8 @@
+{
+  "widget_id": "leetio_wrapper",
+  "target_selector": "html",
+  "highlight_style": {
+    "border": "dashed red",
+    "backgroundColor": "coral"
+  }
+}
