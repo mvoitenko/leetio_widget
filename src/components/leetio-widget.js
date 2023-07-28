@@ -16,20 +16,18 @@ function LeetioWidget() {
     const elementCounter = createCounter(0);
 
     const handleClick = (evt) => {
-
         if (isOpened) {
-            console.log(evt.target.id, elementsMap);
             const hostPageElement = elementsMap[evt.target.id];
-            console.log('clicking on', evt);
-            hostPageElement.style.border = 'dashed red';
+            if (hostPageElement) {
+                const originalBorder = hostPageElement?.style.border.toString();
+                hostPageElement.style.border = 'dashed red';
+                hostPageElement.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
 
-            console.log(elementsMap)
-
-            setTimeout(() => {
-                hostPageElement.style.border = '';
-            }, 3000)
+                setTimeout(() => {
+                    hostPageElement.style.border = originalBorder;
+                }, 3000)
+            }
         }
-
     }
 
     const renderNode = (elObj) => {
@@ -62,21 +60,19 @@ function LeetioWidget() {
 
 
     return (
-        <div className="docked-widget" onClick={handleClick}>
-            { !isOpened &&
-                <button
-                    type="button"
-                    className="dock"
-                    onClick={() => setIsOpened((prevState) => !prevState)}
-                >
-                    View DOM
-                </button>
-            }
-
-            {
-                isOpened &&  renderNode(domTree)
-            }
-
+        <div
+            className="docked-widget"
+            onClick={handleClick}
+            style={{backgroundColor: isOpened ? 'rgba(0,0,0,.5)' : ''}}
+        >
+            <button
+                type="button"
+                className={`dock ${isOpened ? 'close' : ''}`}
+                onClick={() => setIsOpened((prevState) => !prevState)}
+            >
+                {isOpened ? 'Close' : 'View DOM'}
+            </button>
+            {isOpened && renderNode(domTree)}
         </div>
     );
 }
