@@ -12,7 +12,7 @@ Example usage:
 ```
 
 Script available at:
-https://cdn.jsdelivr.net/gh/mvoitenko/leetio_widget@master/public/leetio_widget.js
+https://cdn.jsdelivr.net/gh/mvoitenko/leetio_widget@master/dist/leetio_widget.js
 
 ## Available Scripts
 
