@@ -18,7 +18,7 @@ https://cdn.jsdelivr.net/gh/mvoitenko/leetio_widget@master/dist/leetio_widget.js
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode via **webpack-dev-server**.
 Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
@@ -27,6 +27,4 @@ The page will reload when you make changes.
 
 ### `npm run build`
 
-Builds the widget script for production to the `build` folder.
-
-The build is minified and the filenames include the hashes.
+Builds the widget minified script for production to the `dist` folder.
