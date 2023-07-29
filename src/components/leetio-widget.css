@@ -2,6 +2,7 @@
     cursor: pointer;
     color: white;
     font-family: Arial, system-ui;
+    list-style: square;
 }
 
 .listElement:hover {
